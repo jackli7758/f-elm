@@ -22,4 +22,4 @@ npm run build
 npm run build --report
 ```
 本项目参考 https://github.com/bailicangdu/vue2-elm 并做了改动
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) 
