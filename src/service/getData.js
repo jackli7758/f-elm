@@ -42,7 +42,7 @@ const setpromise = data => {
 }
 
 //编译环境使用真实数据
-if (process.env.NODE_ENV == 'development') {
+if (process.env.NODE_ENV !== 'development') {
 
 	/**
 	 * 获取首页默认地址
@@ -563,3 +563,4 @@ if (process.env.NODE_ENV == 'development') {
 var sendLogin = (code, mobile, validate_token) => setpromise(login.userInfo);
 
 export { cityGuess, hotcity, groupcity, currentcity, searchplace, msiteAdress, msiteFoodTypes, shopList, searchRestaurant, foodCategory, foodDelivery, foodActivity, shopDetails, foodMenu, getRatingList, ratingScores, ratingTags, mobileCode, accountLogin, checkExsis, sendMobile, checkout, getRemark, getAddress, getcaptchas, searchNearby, postAddAddress, placeOrders, rePostVerify, validateOrders, payRequest, getService, vipCart, getHongbaoNum, getExpired, exChangeHongbao, getUser, sendLogin, getOrderList, getOrderDetail, getAddressList, getSearchAddress, deleteAddress }
+ 

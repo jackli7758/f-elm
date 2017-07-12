@@ -292,9 +292,13 @@
         <transition name="fade">
             <p class="show_delete_tip" v-if="showDeleteTip">多规格商品只能去购物车删除哦</p>
         </transition>
-        <transition appear @after-appear='afterEnter' @before-appear="beforeEnter" v-for="(item,index) in showMoveDot":key="index">
+        <transition 
+        appear 
+        @after-appear='afterEnter'
+        @before-appear="beforeEnter" 
+         v-for="(item,index) in showMoveDot":key="index">
             <span class="move_dot" v-if="item">
-                <svg class="move_liner">
+                <svg >
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart-add"></use>
                 </svg>
             </span>
@@ -347,7 +351,8 @@ export default {
             specsIndex: 0, //当前选中的规格索引值
             choosedFoods: null, //当前选中视频数据
             showDeleteTip: false, //多规格商品点击减按钮，弹出提示框
-            showMoveDot: [], //控制下落的小圆点显示隐藏
+            // showMoveDot: [], //控制下落的小圆点显示隐藏
+            showMoveDot: [true,], //控制下落的小圆点显示隐藏
             windowHeight: null, //屏幕的高度
             elLeft: 0, //当前点击加按钮在网页中的绝对top值
             elBottom: 0, //当前点击加按钮在网页中的绝对left值
@@ -626,12 +631,24 @@ export default {
         },
         //显示下落圆球
         showMoveDotFun(showMoveDot, elLeft, elBottom) {
+           
             this.showMoveDot = [...this.showMoveDot, ...showMoveDot];
             this.elLeft = elLeft;
             this.elBottom = elBottom;
         },
+
+        // appear 特性设置节点的在初始渲染的过渡
+        //         <transition
+        //   appear
+        //   v-on:before-appear="customBeforeAppearHook"
+        //   v-on:appear="customAppearHook"
+        //   v-on:after-appear="customAfterAppearHook"
+        // >
+        //   <!-- ... -->
+        // </transition>
         beforeEnter(el) {
             el.style.transform = `translate3d(0,${37 + this.elBottom - this.windowHeight}px,0)`;
+            console.log(el.style.transform)
             el.children[0].style.transform = `translate3d(${this.elLeft - 30}px,0,0)`;
             el.children[0].style.opacity = 0;
         },
